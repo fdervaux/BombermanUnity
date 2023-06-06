@@ -60,13 +60,9 @@ public class CharacterMovement : MonoBehaviour
 
         _horizontalVelocity = Vector3.SmoothDamp(_horizontalVelocity, targetVelocity, ref _smoothDampVelocity, _smoothTime, _maxSpeed);
 
-        Debug.Log(_horizontalVelocity);
-
         _rigidBody.velocity = _horizontalVelocity + _verticalVelocity + groundCorrection * Time.fixedDeltaTime;
 
-        Debug.Log( " ---- " + _rigidBody.velocity);
-
-        _animator.SetFloat("Speed", _rigidBody.velocity.magnitude);
+        _animator.SetFloat("Speed", Mathf.Clamp(_rigidBody.velocity.magnitude / _speed, 0, 1));
 
         if (_horizontalVelocity.magnitude > 0.1)
         {
