@@ -46,7 +46,7 @@ public class Exposion : MonoBehaviour
             return;
         }
 
-        float time = _explositionTimeLeft / _timeDuration;
+        float time = 1 - _explositionTimeLeft / _timeDuration;
         float factor = _distanceAniamtionCurve.Evaluate(time);
 
         _explosionVisualEffect.SetVector4("Distance", _distance * factor);

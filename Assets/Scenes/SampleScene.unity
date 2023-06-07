@@ -526,31 +526,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
-    - target: {fileID: 2476406718349847068, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476406718349847068, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476406718349847068, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476406718349847068, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476406718349847068, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba15ae7f19873c4e9d96b8d8ae4bf7e, type: 3}
 --- !u!1001 &4253931652956013058
