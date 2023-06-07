@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-
-
-
-
+[ExecuteInEditMode]
 public class Exposion : MonoBehaviour
 {
 
     public float _timeDuration = 2;
 
-    public float _distance = 5;
+    public Vector4 _distance = Vector4.one;
 
     private float _explositionTimeLeft = 0;
 
@@ -20,46 +17,49 @@ public class Exposion : MonoBehaviour
 
     public AnimationCurve _distanceAniamtionCurve = AnimationCurve.Constant(0, 1, 1);
 
+    public float _particleFireRateMaximum = 5000;
 
-    public bool ExplodeButton = false;
+
+    [SerializeField, Button("Explode", null, Button.DisplayIn.PlayAndEditModes)] private bool ExplodeButton = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //_explositionTimeLeft = _timeDuration;
     }
 
-
-
-
-    // Update is called once per frame
-    void Update()
+    public void Explode()
     {
-        if (ExplodeButton)
-        {
-            ExplodeButton = false;
-            _explositionTimeLeft = _timeDuration;
-        }
+        _explositionTimeLeft = _timeDuration;
+    }
+
+    private void UpdateExplosion()
+    {
+        if (_explosionVisualEffect == null)
+            return;
 
         if (_explositionTimeLeft <= 0)
         {
-            _explosionVisualEffect.SetFloat("Distance", 0);
+
+            _explosionVisualEffect.SetVector4("Distance", Vector4.zero);
             _explosionVisualEffect.SetFloat("firerate", 0);
+
             return;
         }
 
         float time = _explositionTimeLeft / _timeDuration;
-
         float factor = _distanceAniamtionCurve.Evaluate(time);
 
-        _explosionVisualEffect.SetFloat("Distance", _distance * factor);
-        _explosionVisualEffect.SetFloat("firerate", 5000);
-
+        _explosionVisualEffect.SetVector4("Distance", _distance * factor);
+        _explosionVisualEffect.SetFloat("firerate", _particleFireRateMaximum);
 
         _explositionTimeLeft -= Time.deltaTime;
-
-
-
-
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateExplosion();
+    }
+
+
 }
