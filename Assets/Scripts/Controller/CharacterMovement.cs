@@ -43,13 +43,8 @@ public class CharacterMovement : MonoBehaviour
 
         if (_floorSensor.IsFloorDetected() && _floorSensor.GetFloorDistance() < 0)
         {
-
             _verticalVelocity = Vector3.zero;
-
-            if (_floorSensor.GetFloorDistance() < -0.01f)
-            {
-                groundCorrection = -_floorSensor.GetFloorDistance() * transform.up;
-            }
+            groundCorrection = -_floorSensor.GetFloorDistance() * transform.up;
         }
         else
         {
@@ -60,7 +55,7 @@ public class CharacterMovement : MonoBehaviour
 
         _horizontalVelocity = Vector3.SmoothDamp(_horizontalVelocity, targetVelocity, ref _smoothDampVelocity, _smoothTime, _maxSpeed);
 
-        _rigidBody.velocity = _horizontalVelocity + _verticalVelocity + groundCorrection * Time.fixedDeltaTime;
+        _rigidBody.velocity = _horizontalVelocity + _verticalVelocity + groundCorrection;
 
         _animator.SetFloat("Speed", Mathf.Clamp(_rigidBody.velocity.magnitude / _speed, 0, 1));
 

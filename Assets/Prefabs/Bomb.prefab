@@ -116,7 +116,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _particleFireRateMaximum: 2000
+  _particleFireRateMaximum: 1500
   ExplodeButton: 0
 --- !u!2083052967 &2476406718349847068
 VisualEffect:

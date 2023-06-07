@@ -27,7 +27,7 @@ public class FloorSensor : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -35,20 +35,24 @@ public class FloorSensor : MonoBehaviour
         RaycastHit hit;
         _floorDetected = false;
 
-        if(Physics.SphereCast(transform.position + _shift,_radius,_sensorDirection, out hit, _maxDetectionDistance,_layerMaskDetection))
+        if (Physics.SphereCast(transform.position + _shift, _radius, _sensorDirection, out hit, _maxDetectionDistance, _layerMaskDetection))
         {
-            _floorDistance = hit.distance - Vector3.Project(_shift,_sensorDirection).magnitude;
+
+            Vector3 hitVector = hit.point - transform.position;
+
+            _floorDistance = Vector3.Dot(hitVector, _sensorDirection.normalized);
+            Debug.Log(_floorDistance);
             _floorDetected = true;
 
-            Debug.DrawLine(transform.position + _shift, hit.point, Color.green, Time.fixedDeltaTime);    
+            Debug.DrawLine(transform.position + _shift, hit.point, Color.green, Time.fixedDeltaTime);
             return;
         }
 
-        Debug.DrawLine(transform.position + _shift, transform.position + _sensorDirection.normalized * _maxDetectionDistance, Color.red, Time.fixedDeltaTime);    
+        Debug.DrawLine(transform.position + _shift, transform.position + _sensorDirection.normalized * _maxDetectionDistance, Color.red, Time.fixedDeltaTime);
     }
 
-    
 
 
-    
+
+
 }
